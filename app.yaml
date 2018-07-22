@@ -1,0 +1,18 @@
+#Copyright (c) 2018 ‮nerB ‮taraM
+#Licensed under the MPL-2.0 License.
+
+application: subbox-v2
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: .*
+  script: cfg.wsgi.application
+
+libraries:
+- name: django
+  version: 1.11
+- name: ssl
+  version: latest

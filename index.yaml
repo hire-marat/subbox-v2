@@ -1,0 +1,9 @@
+#Copyright (c) 2018 ‮nerB ‮taraM
+#Licensed under the MPL-2.0 License.
+
+indexes:
+- kind: Video
+  properties:
+  - name: Channel
+  - name: Published
+    direction: desc
