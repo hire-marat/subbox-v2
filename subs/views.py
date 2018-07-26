@@ -45,7 +45,7 @@ def grablast(channelId, start, count):
       )
 
     # we want them in reverse chronological order, too
-    videos.sort(key=lambda video: video.Published)
+    videos.sort(key=lambda video: video.Published, reverse=True)
 
     # we only need so many
     videos = videos[start:start+count]

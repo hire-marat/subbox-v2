@@ -9,7 +9,7 @@ subscription feeds you will hit the datastore API limits very fast.
 ## It's slow
 This is just a proof-of-concept.
 
-While I personally don't mind waiting 10 minutes to retrieve a list of 20
+While I personally don't mind waiting 2 minutes to retrieve a list of 20
 thousand videos, this might be an issue for you.
 
 The current method's read speed grows with the amount of videos.
