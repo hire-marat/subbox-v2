@@ -31,15 +31,27 @@ def grablast(channelId, start, count):
     user = models.User.get_by_id(channelId)
     if user is None: raise KeyError
 
+    step = 32
+    subs = list(user.Subscriptions)
+    videos = []
+
     # what do we want to see?
-    return models.Video.query(
-      # we only want the videos from channels we watch
-      models.Video.Channel.IN(user.Subscriptions)
-    ).order(
-      # we want them in reverse chronological order, too
-     -models.Video.Published
-      # we want them now please
-    ).fetch(limit=count, offset=start)
+    for i in range(ceil(len(subs)/float(step))):
+      videos.extend(
+        models.Video.query(
+          # we only want the videos from channels we watch
+          models.Video.Channel.IN(subs[step*i:step*(i+1)])
+        ).fetch()
+      )
+
+    # we want them in reverse chronological order, too
+    videos.sort(key=lambda video: video.Published)
+
+    # we only need so many
+    videos = videos[start:start+count]
+
+    # we want them now please
+    return videos
 
 
 def home(request):
